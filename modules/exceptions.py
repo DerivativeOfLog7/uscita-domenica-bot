@@ -1,0 +1,2 @@
+class SystemMessagesChannelException(Exception):
+	pass
