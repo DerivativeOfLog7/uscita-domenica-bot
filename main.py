@@ -43,6 +43,7 @@ def _main():
 				CommandHandler("get_log_file", bot_owner_commands.cmd_get_log_file),
 				CommandHandler("stop_bot", bot_owner_commands.cmd_stop_bot)]
 	application.add_handlers(handlers)
+	application.add_error_handler(callback=common.error_callback)
 
 	# Start bot
 	application.post_init = common.sysmessage_bot_started

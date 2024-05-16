@@ -1,6 +1,7 @@
 import telegram
 import telegram.ext
 import telegram.error
+import typing
 from modules import strings, base
 from modules.exceptions import *
 
@@ -35,6 +36,7 @@ async def sysmessage_bot_stopped(app: telegram.ext.Application) -> None:
 	except (telegram.error.BadRequest, telegram.error.Forbidden, telegram.error.InvalidToken, RuntimeError):
 		pass
 
-async def error_callback(update: telegram.Update, context: telegram.ext.CallbackContext) -> None:
+
+async def error_callback(update: typing.Optional[object], context: telegram.ext.CallbackContext):
 	await send_system_message(f"{strings.BOT_ERROR_MESSAGE}\n"
 								f"{context.error}", context.application)
