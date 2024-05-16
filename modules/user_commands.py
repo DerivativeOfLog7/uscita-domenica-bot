@@ -5,7 +5,9 @@ from modules import strings
 
 
 async def cmd_pinnedpoll(silent: bool, update: telegram.Update, context: telegram.ext.CallbackContext) -> None:
-	"""/pinnedpoll or /noisypoll"""
+	"""/pinnedpoll or /noisypoll
+	NOTE: apparently bots need to be admins to pin messages, even if the permission is given to regular users in the group
+	https://docs.python-telegram-bot.org/en/stable/telegram.bot.html#telegram.Bot.pin_chat_message"""
 	msg = await cmd_poll(update, context)
 	try:
 		await msg.pin(disable_notification=silent)
