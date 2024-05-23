@@ -1,9 +1,7 @@
 import sys
-import collections
 import configparser
-import modules.strings
-import logging
 from dataclasses import dataclass
+from typing import Union
 
 
 @dataclass(frozen=True)
@@ -20,7 +18,7 @@ def die(msg: str, code: int) -> None:
 	sys.exit(code)
 
 
-def read_config(filename: str) -> ConfigDataClass | None:
+def read_config(filename: str) -> Union[ConfigDataClass, None]:
 	config = configparser.ConfigParser()
 	if not config.read(filename):
 		raise FileNotFoundError

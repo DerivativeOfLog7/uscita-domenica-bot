@@ -17,9 +17,6 @@ async def send_system_message(msg: str, app: telegram.ext.Application):
 
 async def sysmessage_bot_started(app: telegram.ext.Application) -> None:
 	try:
-		bot_user = await app.bot.get_chat_member(chat_id=app.bot_data["config"].system_messages_channel_id, user_id=app.bot.id)
-		if not bot_user.can_post_messages:
-			raise SystemMessagesChannelException
 		await send_system_message(strings.BOT_STARTED_MESSAGE, app)
 	except (telegram.error.BadRequest, telegram.error.Forbidden):
 		raise SystemMessagesChannelException
