@@ -45,5 +45,5 @@ async def cmd_get_log_file(update: telegram.Update, context: telegram.ext.Callba
 
 @bot_owner_only_command()
 async def cmd_owner_help(update: telegram.Update, context: telegram.ext.CallbackContext):
-	"""/stop_bot"""
+	"""/owner_help"""
 	await update.effective_chat.send_message(text=strings.OWNER_HELP)
