@@ -39,10 +39,16 @@ def _main():
 	handlers = [CommandHandler("start", user_commands.cmd_start),
 				CommandHandler("poll", user_commands.cmd_poll),
 				CommandHandler("noisypoll", partial(user_commands.cmd_pinnedpoll, False)),
-				CommandHandler("pinnedpoll", partial(user_commands.cmd_pinnedpoll, True)),
-				CommandHandler("get_log_file", bot_owner_commands.cmd_get_log_file),
-				CommandHandler("stop_bot", bot_owner_commands.cmd_stop_bot)]
+				CommandHandler("loudpoll", partial(user_commands.cmd_pinnedpoll, False)),
+				CommandHandler("pinnedpoll", partial(user_commands.cmd_pinnedpoll, True))]
+	owner_handlers = [CommandHandler("get_log_file", bot_owner_commands.cmd_get_log_file),
+					CommandHandler("glf", bot_owner_commands.cmd_get_log_file),
+					CommandHandler("stop_bot", bot_owner_commands.cmd_stop_bot),
+					CommandHandler("sb", bot_owner_commands.cmd_stop_bot),
+					CommandHandler("owner_help", bot_owner_commands.cmd_owner_help),
+					CommandHandler("oh", bot_owner_commands.cmd_owner_help)]
 	application.add_handlers(handlers)
+	application.add_handlers(owner_handlers)
 	application.add_error_handler(callback=common.error_callback)
 
 	# Start bot
